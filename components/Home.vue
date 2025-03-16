@@ -70,7 +70,6 @@
 
 <script>
 import axios from 'axios'
-import { useToast } from "vue-toastification";
 
 export default {
   data() {
@@ -113,14 +112,10 @@ export default {
         this.errorMessage = 'No URL to copy';
         return;
       }
-      const toast = useToast();
 
       navigator.clipboard.writeText(this.shortUrl)
         .then(() => {
           this.successMessage = 'URL copied to the clipboard successfully'
-          toast.success('URL copied to clipboard!', {
-            timeout: 3000
-          });
         })
         .catch(err => {
           this.errorMessage = `Failed to copy URL: ${err.message}`;
